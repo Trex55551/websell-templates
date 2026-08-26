@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} | {{NICHE}} in {{CITY}}</title>
+<meta name="description" content="{{NICHE}} services in {{CITY}} — {{BUSINESS_NAME}}. Call {{PHONE}} or WhatsApp for a fast, friendly quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05070d;--bg2:#0a0e18;--card:rgba(255,255,255,.035);--card-hover:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.08);--text:#f2f4fa;--muted:rgba(242,244,250,.55);
+  --accent:#a78bfa;--accent2:#8b5cf6;--accent-soft:color-mix(in srgb,#a78bfa 14%,transparent);
+  --accent-line:color-mix(in srgb,#a78bfa 35%,transparent);
+  --wa:#25d366;--wa-dark:#1da851;--radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.display{font-family:'Sora',sans-serif}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+/* ---------- aurora motion background ---------- */
+.aurora{position:fixed;inset:0;z-index:-2;overflow:hidden;background:linear-gradient(180deg,#05070d 0%,#070b16 55%,#0a0e1c 100%)}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;will-change:transform}
+.blob-1{width:52vw;height:52vw;background:radial-gradient(circle,color-mix(in srgb,#a78bfa 34%,transparent),transparent 65%);top:-18vw;left:-12vw;animation:drift1 22s ease-in-out infinite}
+.blob-2{width:46vw;height:46vw;background:radial-gradient(circle,color-mix(in srgb,#8b5cf6 28%,transparent),transparent 65%);bottom:-16vw;right:-10vw;animation:drift2 26s ease-in-out infinite}
+.blob-3{width:30vw;height:30vw;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 60%);top:40%;left:55%;animation:drift3 30s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(9vw,6vh) scale(1.15)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-8vw,-7vh) scale(1.1)}}
+@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(-6vw,5vh)}}
+.grid-overlay{position:fixed;inset:0;z-index:-1;opacity:.05;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 0%,black 30%,transparent 75%)}
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.05rem clamp(1.2rem,4vw,3rem);transition:background .35s,border-color .35s,backdrop-filter .35s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(5,7,13,.82);backdrop-filter:blur(18px);border-color:var(--border)}
+.nav-logo{display:flex;align-items:center;gap:.65rem;font-family:'Sora',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:-.01em}
+.nav-icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--accent2));font-size:1.15rem;box-shadow:0 6px 18px color-mix(in srgb,#a78bfa 40%,transparent);animation:logoPop .9s cubic-bezier(.2,.9,.3,1.4) both}
+@keyframes logoPop{from{transform:scale(.4) rotate(-12deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+.nav-actions{display:flex;gap:.6rem;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:600;border-radius:12px;transition:transform .18s,box-shadow .25s,background .25s;white-space:nowrap}
+.btn-sm{padding:.55rem 1.05rem;font-size:.85rem}
+.btn-md{padding:.95rem 1.9rem;font-size:1rem}
+.btn-lg{padding:1.05rem 2.2rem;font-size:1.05rem}
+.btn-call{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04060c;box-shadow:0 6px 22px color-mix(in srgb,#a78bfa 38%,transparent)}
+.btn-call:hover{transform:translateY(-2px);box-shadow:0 10px 30px color-mix(in srgb,#a78bfa 50%,transparent)}
+.btn-wa{background:var(--wa);color:#04220f;box-shadow:0 6px 20px rgba(37,211,102,.28)}
+.btn-wa:hover{background:var(--wa-dark);transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.4)}
+.btn-ghost{background:var(--card);border:1px solid var(--border);color:var(--text)}
+.btn-ghost:hover{background:var(--card-hover);transform:translateY(-2px)}
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:7.5rem clamp(1.2rem,4vw,3rem) 4.5rem;position:relative}
+.hero-inner{max-width:900px}
+.hero-badge{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1.15rem;border-radius:100px;background:var(--card);border:1px solid var(--border);backdrop-filter:blur(12px);font-size:.86rem;font-weight:600;color:var(--muted);margin-bottom:1.8rem;animation:fadeUp .7s .15s ease both}
+.hero-badge .stars{color:#fbbf24;letter-spacing:2px}
+.hero-badge strong{color:var(--text)}
+.hero h1{font-size:clamp(2.5rem,7.5vw,4.9rem);line-height:1.02;letter-spacing:-.035em;font-weight:800;margin-bottom:1.4rem;animation:fadeUp .7s .3s ease both}
+.hero h1 .grad{background:linear-gradient(120deg,var(--accent),var(--accent2) 60%,color-mix(in srgb,#a78bfa 55%,white));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:clamp(1rem,2.2vw,1.22rem);color:var(--muted);max-width:560px;margin:0 auto 2.4rem;animation:fadeUp .7s .45s ease both}
+.hero-ctas{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.6rem;animation:fadeUp .7s .6s ease both}
+.hero-trust{display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap;color:var(--muted);font-size:.88rem;animation:fadeUp .7s .75s ease both}
+.hero-trust span{display:inline-flex;align-items:center;gap:.45rem}
+.hero-trust svg{width:15px;height:15px;color:var(--accent)}
+.scroll-hint{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--muted);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
+.mouse{width:22px;height:34px;border:2px solid var(--muted);border-radius:12px;position:relative}
+.mouse::after{content:'';position:absolute;top:6px;left:50%;width:4px;height:8px;margin-left:-2px;background:var(--accent);border-radius:3px;animation:wheel 1.8s ease infinite}
+@keyframes wheel{0%{opacity:1;transform:translateY(0)}70%{opacity:0;transform:translateY(12px)}100%{opacity:0}}
+/* ---------- marquee ---------- */
+.marquee-wrap{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,.02);padding:1rem 0}
+.marquee{display:flex;gap:2.6rem;width:max-content;animation:scrollX 26s linear infinite}
+.marquee span{display:inline-flex;align-items:center;gap:.9rem;font-family:'Sora',sans-serif;font-weight:600;font-size:.95rem;color:var(--muted);white-space:nowrap}
+.marquee span b{color:var(--accent)}
+@keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ---------- sections ---------- */
+section{padding:clamp(3.5rem,8vw,6rem) clamp(1.2rem,4vw,3rem)}
+.wrap{max-width:1060px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.eyebrow::before{content:'';width:26px;height:2px;background:var(--accent);border-radius:2px}
+h2.sec-title{font-size:clamp(1.8rem,4vw,2.7rem);letter-spacing:-.03em;margin-bottom:.8rem}
+.sec-sub{color:var(--muted);max-width:520px;margin-bottom:2.8rem;font-size:1rem}
+/* services */
+.grid6{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem}
+.svc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.7rem 1.5rem;backdrop-filter:blur(10px);position:relative;overflow:hidden;transition:transform .25s ease,border-color .3s,background .3s}
+.svc::before{content:'';position:absolute;inset:0;background:radial-gradient(340px 140px at var(--mx,50%) var(--my,0%),color-mix(in srgb,#a78bfa 16%,transparent),transparent 70%);opacity:0;transition:opacity .35s}
+.svc:hover{border-color:var(--accent-line);background:var(--card-hover);transform:translateY(-5px)}
+.svc:hover::before{opacity:1}
+.svc-icon{width:52px;height:52px;border-radius:14px;background:var(--accent-soft);border:1px solid var(--accent-line);display:inline-flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.1rem}
+.svc h3{font-size:1.06rem;font-weight:700;margin-bottom:.35rem}
+.svc p{color:var(--muted);font-size:.88rem}
+/* reviews */
+.reviews{background:rgba(255,255,255,.018);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.rating-pill{display:inline-flex;align-items:center;gap:1rem;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:.9rem 1.4rem;margin-bottom:2.4rem;backdrop-filter:blur(10px)}
+.rating-num{font-family:'Sora',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:var(--text)}
+.rating-meta{font-size:.82rem;color:var(--muted);line-height:1.35}
+.rating-stars{color:#fbbf24;letter-spacing:3px;font-size:1rem}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.1rem}
+.rev{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;backdrop-filter:blur(10px);transition:transform .25s,border-color .3s}
+.rev:hover{transform:translateY(-4px);border-color:var(--accent-line)}
+.rev-stars{color:#fbbf24;letter-spacing:2px;font-size:.9rem;margin-bottom:.8rem}
+.rev-text{color:var(--muted);font-size:.92rem;margin-bottom:1.2rem;font-style:italic}
+.rev-who{display:flex;align-items:center;gap:.75rem}
+.avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;color:#04060c}
+.rev-who b{display:block;font-size:.9rem}
+.rev-who small{color:var(--muted);font-size:.78rem}
+/* contact */
+.cta-panel{background:linear-gradient(140deg,color-mix(in srgb,#a78bfa 13%,transparent),rgba(255,255,255,.02) 55%);border:1px solid var(--accent-line);border-radius:24px;padding:clamp(2.2rem,5vw,3.5rem);text-align:center;backdrop-filter:blur(14px);position:relative;overflow:hidden}
+.cta-panel h2{font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.03em;margin-bottom:.8rem}
+.cta-panel p{color:var(--muted);max-width:520px;margin:0 auto 1.8rem}
+.cta-addr{display:flex;align-items:center;justify-content:center;gap:.5rem;color:var(--muted);font-size:.92rem;margin-bottom:2rem;flex-wrap:wrap}
+.cta-addr svg{width:16px;height:16px;color:var(--accent)}
+.cta-btns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+/* footer */
+footer{padding:2.2rem clamp(1.2rem,4vw,3rem);border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:.84rem;display:flex;flex-direction:column;gap:.4rem;align-items:center}
+footer b{color:var(--text)}
+/* sticky mobile bar */
+.mobile-bar{position:fixed;bottom:0;left:0;right:0;z-index:90;display:none;grid-template-columns:1fr 1fr;gap:.7rem;padding:.75rem 1rem calc(.75rem + env(safe-area-inset-bottom));background:rgba(5,7,13,.92);backdrop-filter:blur(18px);border-top:1px solid var(--border)}
+@media (max-width:680px){.mobile-bar{display:grid}.nav-actions .btn-sm{display:none}body{padding-bottom:76px}}
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .blob,.marquee,.mouse::after{animation:none!important}
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+<div class="grid-overlay" aria-hidden="true"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="#top"><span class="nav-icon">🏆</span>{{BUSINESS_NAME}}</a>
+  <div class="nav-actions">
+    <a class="btn btn-sm btn-ghost" href="tel:{{PHONE}}">📞 {{PHONE}}</a>
+    <a class="btn btn-sm btn-wa" href="https://wa.me/{{WHATSAPP}}" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="stars">★★★★★</span> <strong>{{RATING}}</strong> rated · {{REVIEW_COUNT}} reviews</div>
+    <h1>{{BUSINESS_NAME}}<br><span class="grad">{{NICHE}} in {{CITY}}</span></h1>
+    <p class="hero-sub">Trusted, local and reliable — fast response, honest pricing and work done properly the first time. One call and we handle the rest.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-md btn-call" href="tel:{{PHONE}}">📞 Call {{PHONE}}</a>
+      <a class="btn btn-md btn-wa" href="https://wa.me/{{WHATSAPP}}" target="_blank" rel="noopener">💬 WhatsApp us</a>
+    </div>
+    <div class="hero-trust">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Local &amp; trusted</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Free, no-obligation quotes</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Same-day response</span>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="mouse"></div>Scroll</div>
+</header>
+
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee" id="marquee">
+    <span><b>★</b>{{SERVICE_1}}</span><span><b>★</b>{{SERVICE_2}}</span><span><b>★</b>{{SERVICE_3}}</span>
+    <span><b>★</b>{{SERVICE_4}}</span><span><b>★</b>{{SERVICE_5}}</span><span><b>★</b>{{SERVICE_6}}</span>
+    <span><b>★</b>{{SERVICE_1}}</span><span><b>★</b>{{SERVICE_2}}</span><span><b>★</b>{{SERVICE_3}}</span>
+    <span><b>★</b>{{SERVICE_4}}</span><span><b>★</b>{{SERVICE_5}}</span><span><b>★</b>{{SERVICE_6}}</span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="eyebrow reveal">What we do</div>
+    <h2 class="sec-title reveal d1">{{NICHE}} Services</h2>
+    <p class="sec-sub reveal d2">Everything covered, done to a high standard — and backed by our satisfaction guarantee.</p>
+    <div class="grid6">
+      <div class="svc reveal d1"><span class="svc-icon">🏆</span><h3>{{SERVICE_1}}</h3><p>Professional service, tidy finish, fair price.</p></div>
+      <div class="svc reveal d2"><span class="svc-icon">🏆</span><h3>{{SERVICE_2}}</h3><p>Professional service, tidy finish, fair price.</p></div>
+      <div class="svc reveal d3"><span class="svc-icon">🏆</span><h3>{{SERVICE_3}}</h3><p>Professional service, tidy finish, fair price.</p></div>
+      <div class="svc reveal d1"><span class="svc-icon">🏆</span><h3>{{SERVICE_4}}</h3><p>Professional service, tidy finish, fair price.</p></div>
+      <div class="svc reveal d2"><span class="svc-icon">🏆</span><h3>{{SERVICE_5}}</h3><p>Professional service, tidy finish, fair price.</p></div>
+      <div class="svc reveal d3"><span class="svc-icon">🏆</span><h3>{{SERVICE_6}}</h3><p>Professional service, tidy finish, fair price.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="eyebrow reveal">What customers say</div>
+    <h2 class="sec-title reveal d1">Rated by real customers</h2>
+    <div class="rating-pill reveal d2">
+      <span class="rating-num">{{RATING}}</span>
+      <span class="rating-meta"><span class="rating-stars">★★★★★</span><br>Based on {{REVIEW_COUNT}} reviews</span>
+    </div>
+    <div class="grid3">
+      <div class="rev reveal d1"><div class="rev-stars">★★★★★</div><p class="rev-text">"{{REVIEW_1}}"</p><div class="rev-who"><span class="avatar">{{REVIEWER_1_INITIAL}}</span><span><b>{{REVIEWER_1}}</b><small>Verified customer</small></span></div></div>
+      <div class="rev reveal d2"><div class="rev-stars">★★★★★</div><p class="rev-text">"{{REVIEW_2}}"</p><div class="rev-who"><span class="avatar">{{REVIEWER_2_INITIAL}}</span><span><b>{{REVIEWER_2}}</b><small>Verified customer</small></span></div></div>
+      <div class="rev reveal d3"><div class="rev-stars">★★★★★</div><p class="rev-text">"{{REVIEW_3}}"</p><div class="rev-who"><span class="avatar">{{REVIEWER_3_INITIAL}}</span><span><b>{{REVIEWER_3}}</b><small>Verified customer</small></span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-panel reveal">
+      <h2>Ready to get started?</h2>
+      <p>Call or WhatsApp now — we'll talk it through, give you an honest quote, and get it sorted.</p>
+      <div class="cta-addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>{{ADDRESS}} &nbsp;·&nbsp; {{CITY}}</div>
+      <div class="cta-btns">
+        <a class="btn btn-lg btn-call" href="tel:{{PHONE}}">📞 Call {{PHONE}}</a>
+        <a class="btn btn-lg btn-wa" href="https://wa.me/{{WHATSAPP}}" target="_blank" rel="noopener">💬 WhatsApp us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span><b>{{BUSINESS_NAME}}</b> · {{NICHE}} in {{CITY}}</span>
+  <span>📞 <a href="tel:{{PHONE}}">{{PHONE}}</a> &nbsp;·&nbsp; Serving {{CITY}} and surrounding areas</span>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-md btn-call" href="tel:{{PHONE}}">📞 Call</a>
+  <a class="btn btn-md btn-wa" href="https://wa.me/{{WHATSAPP}}" target="_blank" rel="noopener">💬 WhatsApp</a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // sticky nav
+  var nav = document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 24); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  // scroll reveal
+  var els = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) { els.forEach(function(e){e.classList.add('in');}); }
+  else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+    }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){ io.observe(e); });
+  }
+  // marquee seamless loop: duplicate once (CSS moves -50%)
+  var mq = document.getElementById('marquee');
+  if (mq && !reduce) { mq.innerHTML += mq.innerHTML; }
+  // service card glow follows cursor
+  if (!reduce) {
+    document.querySelectorAll('.svc').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
